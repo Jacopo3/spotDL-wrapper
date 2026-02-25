@@ -79,7 +79,7 @@ def build_spotdl_command(url: str, output_dir: Path, organize: bool, overwrite: 
 
     # ── Directory di output ──────────────────
     if organize:
-        output_template = str(output_dir / "{artist}" / "{album}" / "{title}.{output-format}")
+        output_template = str(output_dir / "{artist}" / "{title}.{output-format}")
     else:
         output_template = str(output_dir / "{title}.{output-format}")
 
@@ -87,6 +87,8 @@ def build_spotdl_command(url: str, output_dir: Path, organize: bool, overwrite: 
 
     # ── Modalità overwrite ───────────────────
     cmd += ["--overwrite", overwrite]
+    
+    cmd += ["--format", "mp3", "--bitrate", "128k"]
 
     return cmd
 
